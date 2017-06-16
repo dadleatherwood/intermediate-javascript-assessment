@@ -44,7 +44,9 @@ function noWeakLink() {
     url: '/api/users'
   })
   // CODE HERE...
-
+.then(function(){
+  
+})
 }
 
 
