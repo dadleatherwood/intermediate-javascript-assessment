@@ -123,7 +123,21 @@ mustang.drive()
 
 // CODE HERE...
 String.prototype.grammarPolice = function(str){
-  return str
+  var splitStr = str.split(' ')
+  var solution = []
+
+  for (var i = 0; i < splitStr.length; i++){
+    var word = []
+    word.push(splitStr[i][0].toUpperCase())
+    for (var j = 1; j < splitStr[i].length; j++) {
+      word.push(splitStr[i][j].toLowerCase())
+    }
+
+    console.log(word)
+    word = word.join("")
+    solution.push(word)
+  }
+  return solution.join(" ")
 }
 
 
@@ -145,7 +159,7 @@ String.prototype.grammarPolice = function(str){
 function valueType (param1, param2) {
   if (typeof param1 === typeof param2 && param1 === param2) {
     return "Exactly the same"
-  } else if (typeof param1 !== typeof param2 && param1 === param2) {
+  } else if (typeof param1 !== typeof param2 && param1 == param2) {
     return "Same value, different types"
   } else {
     return "Different values"
@@ -167,6 +181,6 @@ var theAnswer = "Unknown";
 // CODE HERE...
 function promiseCatcher(promise){
   promise.then(function(response){
-    var theAnswer = response.data
+    theAnswer = response
   })
 }

@@ -44,9 +44,16 @@ function noWeakLink() {
     url: '/api/users'
   })
   // CODE HERE...
-.then(function(){
-  
-})
+  .then(function(response){
+    console.log("Line 48", response)
+    firstUser = response.data[0]
+    return response
+  })
+  .then(function(response){
+    console.log(response)
+    thirdUser = response.data[2]
+    return response.data[9]
+  })
 }
 
 
@@ -76,7 +83,7 @@ function large() {
   return 'My name is ' + this.name + ' and I am very heavy!'
 }
 // CODE HERE...
-
+var boundToElephant = large.bind(elephant)
 
 
 // *************
@@ -90,7 +97,9 @@ function large() {
 // and return the bound function.
 
 // CODE HERE...
-
+function deathStar (capacity, crew){
+  return capacity.bind(crew)
+}
 
 
 // *************
@@ -105,7 +114,11 @@ function large() {
 // The closure function will return the combined value of assets and liabilities.
 
 // CODE HERE...
-
+function accountingOffice (assets){
+  return function(liabilities){
+    return assets + liabilities
+  }
+}
 
 
 // *************
@@ -130,7 +143,13 @@ function large() {
 // };
 
 // CODE HERE...
-
+function forgetter(name){
+  var listOfItems = []
+   return function rememberall(item){
+    listOfItems.push(item)
+    return {name: name, remember: listOfItems}
+  }
+}
 
 
 // *************
@@ -158,3 +177,18 @@ function large() {
 // NOTE: Neither hunger nor danger should be able to exceed 100 or drop below 0.
 
 // CODE HERE...
+function Frodo(startingHungerValue, startingDangerValue){
+  this.startingHungerValue = startingHungerValue
+  this.startingDangerValue = startingDangerValue
+  this.dinnerOverFire = function(){
+    this.startingHungerValue -= 25;
+    this.startingDangerValue += 40;
+    return {hunger: this.startingHungerValue, danger: this.startingDangerValue}
+  }
+  this.hidingInBush = function(){
+    if(startingHungerValue + 35 < 100 && startingDangerValue - 20 > 0)
+    this.startingHungerValue += 35
+    this.startingDangerValue -= 20
+    return {hunger: startingHungerValue, danger: startingDangerValue}
+  }
+}
