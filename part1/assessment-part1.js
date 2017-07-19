@@ -122,22 +122,14 @@ mustang.drive()
 
 
 // CODE HERE...
-String.prototype.grammarPolice = function(str){
-  var splitStr = str.split(' ')
-  var solution = []
+// toy problem, cap stuff
 
-  for (var i = 0; i < splitStr.length; i++){
-    var word = []
-    word.push(splitStr[i][0].toUpperCase())
-    for (var j = 1; j < splitStr[i].length; j++) {
-      word.push(splitStr[i][j].toLowerCase())
-    }
+// Access prototype
 
-    console.log(word)
-    word = word.join("")
-    solution.push(word)
-  }
-  return solution.join(" ")
+String.prototype.grammarPolice = function() {
+  return this.toLowerCase().split(' ').map(function(word) {
+    return word[0].toUpperCase() + word.substr(1);
+  }).join(' ');
 }
 
 

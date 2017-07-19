@@ -177,18 +177,49 @@ function forgetter(name){
 // NOTE: Neither hunger nor danger should be able to exceed 100 or drop below 0.
 
 // CODE HERE...
-function Frodo(startingHungerValue, startingDangerValue){
-  this.startingHungerValue = startingHungerValue
-  this.startingDangerValue = startingDangerValue
-  this.dinnerOverFire = function(){
-    this.startingHungerValue -= 25;
-    this.startingDangerValue += 40;
-    return {hunger: this.startingHungerValue, danger: this.startingDangerValue}
-  }
-  this.hidingInBush = function(){
-    if(startingHungerValue + 35 < 100 && startingDangerValue - 20 > 0)
-    this.startingHungerValue += 35
-    this.startingDangerValue -= 20
-    return {hunger: startingHungerValue, danger: startingDangerValue}
+
+var frodo = function(startingHungerValue, startingDangerValue) {
+
+  var hunger = startingHungerValue;
+  var danger = startingDangerValue;
+
+  return {
+
+    dinnerOverFire: function() {
+      hunger -= 25;
+      danger += 40;
+      if (hunger > 100) {
+        hunger = 100
+      } else if (hunger < 0) {
+        hunger = 0;
+      }
+      if (danger > 100) {
+        danger = 100;
+      } else if (danger < 0) {
+        danger = 0;
+      }
+      return {
+        hunger,
+        danger
+      }
+    },
+    hidingInBush: function() {
+      hunger += 35;
+      danger -= 20;
+      if (hunger > 100) {
+        hunger = 100
+      } else if (hunger < 0) {
+        hunger = 0;
+      }
+      if (danger > 100) {
+        danger = 100;
+      } else if (danger < 0) {
+        danger = 0;
+      }
+      return {
+        hunger,
+        danger
+      }
+    }
   }
 }

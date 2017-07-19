@@ -102,17 +102,17 @@ describe('Part 2:', function() {
   describe('frodo', function() {
 
     it('should exist', function() {
-      expect(Frodo).toEqual(jasmine.any(Function));
+      expect(frodo).toEqual(jasmine.any(Function));
     })
 
     it('should return object with two methods', function() {
-      expect(new Frodo()).toEqual(jasmine.any(Object));
-      expect(new Frodo().dinnerOverFire).toEqual(jasmine.any(Function));
-      expect(new Frodo().hidingInBush).toEqual(jasmine.any(Function));
+      expect(frodo()).toEqual(jasmine.any(Object));
+      expect(frodo().dinnerOverFire).toEqual(jasmine.any(Function));
+      expect(frodo().hidingInBush).toEqual(jasmine.any(Function));
     })
 
     it('expect correct hunger/danger values after method invoke', function() {
-      var firstTest = new Frodo(50,50);
+      var firstTest = frodo(50,50);
       console.log(firstTest)
       firstTest.dinnerOverFire();
       firstTest.dinnerOverFire();
@@ -121,7 +121,7 @@ describe('Part 2:', function() {
       console.log(firstTestValues)
       expect(firstTestValues.hunger).toEqual(0)
       expect(firstTestValues.danger).toEqual(100)
-      var secondTest = new Frodo(0,100);
+      var secondTest = frodo(0,100);
       secondTest.hidingInBush();
       secondTest.hidingInBush();
       secondTest.hidingInBush();
